@@ -44,8 +44,6 @@ public class LlenadoDuctoRepository {
                 material, pulgada, tipoMetal, fases, calibreFase, calibreNeutro, calibreTierra, tipoCable
         );
 
-        System.out.println("Resultado del procedimiento: " + result);
-
         LlenadoDuctoResultado resultado = new LlenadoDuctoResultado();
         resultado.setAreaDucto(((Number) result.get("p_Area_Ducto")).doubleValue());
         resultado.setAreaFase(((Number) result.get("p_Area_Fase")).doubleValue());
