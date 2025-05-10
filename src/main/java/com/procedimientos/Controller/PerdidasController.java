@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/perdidas")
-public class PerdidasController {
+public class    PerdidasController {
     private final PerdidasService perdidasService;
 
     public PerdidasController(PerdidasService perdidasService) {
