@@ -1,14 +1,19 @@
-# Usar una imagen de Java 21
-FROM eclipse-temurin:21-jdk
-
-# Crear directorio dentro del contenedor
+# Etapa 1: construir el proyecto con Maven
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copiar el .jar generado a la imagen
-COPY target/procedimientos-0.0.1-SNAPSHOT.jar app.jar
+# Copia el proyecto completo
+COPY . .
 
-# Exponer el puerto de Spring Boot
-EXPOSE 8080
+# Construye el JAR (sin ejecutar pruebas)
+RUN mvn clean package -DskipTests
 
-# Ejecutar la aplicación
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Etapa 2: imagen ligera para ejecutar el JAR
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+
+# Copia el .jar construido desde la etapa anterior
+COPY --from=build /app/target/*.jar app.jar
+
+# Comando para ejecutar la aplicación
+CMD ["java", "-jar", "app.jar"]
