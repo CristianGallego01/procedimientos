@@ -15,7 +15,7 @@ import java.net.http.HttpResponse;
 @Service
 public class ChatIAService {
 
-    private static final String API_KEY = "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"; // <-- tu API key aquí
+    private static final String API_KEY = "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" ; // <-- tu API key aquí
     private static final String API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
     public ChatResponse getIAResponse(ChatRequest request) {
