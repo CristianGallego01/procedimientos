@@ -42,6 +42,7 @@ public class ChatIAService {
                     .uri(URI.create(API_URL))
                     .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + API_KEY)
+                    .header("HTTP-Referer", "https://procedimientos.onrender.com")
                     .POST(HttpRequest.BodyPublishers.ofString(body))
                     .build();
 
